@@ -8,22 +8,25 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-
+  console.log(name)
+  const formInputDiv = input => {
+    const displayInput = input.charAt(0).toUpperCase() + input.slice(1)
+    if(name === 'login' && input === 'username') return null
+    else return (
+      <div>
+        <label htmlFor={input}>
+          <small>{displayInput}</small>
+        </label>
+        <input name={input} type={input === 'password' ? "password" : "text"} />
+      </div>
+    )
+  }
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
+        {formInputDiv('username')}
+        {formInputDiv('email')}
+        {formInputDiv('password')}
         <div>
           <button type="submit">{displayName}</button>
         </div>
@@ -62,9 +65,10 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
+      const username = evt.target.username.value
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(username, email, password, formName))
     }
   }
 }
