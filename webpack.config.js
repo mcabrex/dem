@@ -14,6 +14,9 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devtool: 'source-map',
+  devServer: {
+    hot: true
+  },
   module: {
     rules: [
       {
@@ -22,7 +25,7 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test:/\.(s*)css$/,
+        test:/\.s?css/,
         use:['style-loader','css-loader', 'sass-loader']
      }
     ]

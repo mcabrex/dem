@@ -1,0 +1,19 @@
+@import './navbar.scss';
+@import './form.scss';
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.site {
+  background-color: rgb(36, 36, 36);
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  font-family: 'Cinzel Decorative', cursive;
+
+  color: white;
+}

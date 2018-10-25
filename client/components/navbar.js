@@ -5,9 +5,11 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>Dungeon Master</h1>
-    <nav>
+  <div className="navbar">
+
+    <img className="navbar-logo" src="https://vectr.com/mcabrex/gc2T4Hdhl.svg?width=240&height=280&select=f1lrSn9KLc,a2dOpqnnuk,a3yGYAR8Ao,d7iT4O7kM1,iAyVXfqM2&source=selection" />
+    <h1 className="navbar-title">Dungeon Master</h1>
+    <div className="navbar-login">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
@@ -17,14 +19,13 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           </a>
         </div>
       ) : (
-        <div>
+        <div >
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/login" className="navbar-login-button">Login</Link>{' '}
+          <Link to="/signup" className="navbar-login-button">Sign Up</Link>
         </div>
       )}
-    </nav>
-    <hr />
+    </div>
   </div>
 )
 

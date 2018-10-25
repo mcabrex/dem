@@ -1,0 +1,27 @@
+.navbar {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: rgb(121, 0, 0);
+
+  color: white;
+  text-align: center;
+  &-logo {
+    width: 50%;
+    height: 30%;
+    margin: 10% auto;
+    margin-bottom: 0;
+  }
+  &-title {
+    font-size: 70%;
+    margin: 0 auto;
+  }
+  &-login {
+    &-button {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

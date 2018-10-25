@@ -1,0 +1,54 @@
+.form {
+  background-image: url("https://vectr.com/mcabrex/b7Kukj5tU.svg?width=640&height=640&select=b7Kukj5tUpage0&source=page");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  &-title {
+    margin-top: 10%;
+    font-family: 'Uncial Antiqua', cursive;
+    color: rgb(141, 0, 0);
+    text-align: center;
+  }
+  &-description {
+    margin-top: 2.5%;
+    font-family: 'Cinzel Decorative', cursive;
+    text-align: center;
+  }
+  &-inputs {
+    text-align: center;
+  }
+  &-input {
+    margin-top: 2.5%;
+    &-title {
+
+    }
+    &-box {
+      width: 20%;
+      background-color: rgba(255, 255, 255, 0);
+      color: white;
+      border: solid;
+      border-radius: 25px;
+      border-color: white;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+  &-submit {
+    height: 5vh;
+    &-button {
+      font-family: 'Cinzel Decorative', cursive;
+      margin-top: 2.5%;
+      width: 15%;
+      height: 100%;
+      background-color: rgb(141,0,1);
+      color: white;
+      border: none;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+  &-error {
+    text-align: center;
+    margin-top: 5%;
+  }
+}
