@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "build-client": "webpack",
-    "build-client-watch": "webpack-dev-server --hot",
+    "build-client-watch": "webpack-dev-server",
     "deploy": "script/deploy",
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint-fix": "npm run lint -- --fix",
@@ -50,7 +50,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-hot-loader": "^4.3.11",
     "react-redux": "^5.0.2",
     "react-router-dom": "^4.3.1",
     "redux": "^3.6.0",

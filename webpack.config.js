@@ -17,7 +17,6 @@ module.exports = {
     watchContentBase: true,
     compress: true,
     port: 8080,
-    hot: true
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -39,7 +38,4 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
 }

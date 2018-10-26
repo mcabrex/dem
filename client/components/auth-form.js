@@ -8,7 +8,6 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log(error)
   const formInputDiv = input => {
     const displayInput = input.charAt(0).toUpperCase() + input.slice(1)
     if(name === 'login' && input === 'username') return 
@@ -69,7 +68,6 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
-      console.log(evt.target.password.value)
       evt.preventDefault()
       const formName = evt.target.name
       const username = evt.target.username ? evt.target.username.value : null

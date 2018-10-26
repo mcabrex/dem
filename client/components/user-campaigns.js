@@ -10,7 +10,7 @@ export const UserCampaigns = props => {
 
   return (
     <div className="userhome">
-      <div>Welcome, {username}, Campaigns</div>
+      <div>Campaigns</div>
     </div>
   )
 }

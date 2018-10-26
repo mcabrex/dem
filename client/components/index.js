@@ -6,4 +6,5 @@
 export {default as Navbar} from './navbar/navbar'
 export {default as UserHome} from './user-home'
 export {default as UserCampaigns} from './user-campaigns'
+export {default as Classes} from './Classes'
 export {Login, Signup} from './auth-form'
