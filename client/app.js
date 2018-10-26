@@ -3,6 +3,9 @@ import React from 'react'
 import {Navbar} from './components'
 import Routes from './routes'
 
+import { hot } from 'react-hot-loader'
+
+
 const App = () => {
   return (
     <div className="site">
@@ -12,4 +15,4 @@ const App = () => {
   )
 }
 
-export default App
+export default hot(module)(App)

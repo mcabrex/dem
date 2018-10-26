@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
@@ -8,14 +9,18 @@ module.exports = {
   ],
   output: {
     path: __dirname,
-    filename: './public/bundle.js'
+    filename: './public/bundle.js',
+  },
+  devServer: {
+    publicPath: './public/bundle.js',
+    contentBase: './public/index.html',
+    watchContentBase: true,
+    compress: true,
+    port: 8080,
+    hot: true
   },
   resolve: {
     extensions: ['.js', '.jsx']
-  },
-  devtool: 'source-map',
-  devServer: {
-    hot: true
   },
   module: {
     rules: [
@@ -25,9 +30,16 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test:/\.s?css/,
-        use:['style-loader','css-loader', 'sass-loader']
-     }
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.s?css/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
     ]
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }
