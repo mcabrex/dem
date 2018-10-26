@@ -5,12 +5,12 @@ import {connect} from 'react-redux'
 /**
  * COMPONENT
  */
-export const UserHome = props => {
+export const UserCampaigns = props => {
   const {username} = props
 
   return (
     <div className="userhome">
-      <div>Welcome, {username}</div>
+      <div>Welcome, {username}, Campaigns</div>
     </div>
   )
 }
@@ -24,11 +24,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+export default connect(mapState)(UserCampaigns)
 
 /**
  * PROP TYPES
  */
-UserHome.propTypes = {
+UserCampaigns.propTypes = {
   username: PropTypes.string
 }

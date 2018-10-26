@@ -2,8 +2,12 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Campaign = db.define('campaign', {
-    title: Sequelize.STRING,
-    description: Sequelize.TEXT,
+  title: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false
+  },
+  description: Sequelize.TEXT
 })
 
 module.exports = Campaign

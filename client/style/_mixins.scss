@@ -1,0 +1,27 @@
+@mixin background-pic($url,$size){
+    background-image: url($url);
+    background-size: $size;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@mixin text-design($font,$font-style,$align,$color){
+    font-family: $font, $font-style;
+    text-align: $align;
+    color: $color;
+}
+
+@mixin button($color,$hover-color){
+    color: $color;
+    text-decoration: none;
+    &:hover {
+      background-color: $hover-color;
+    }
+}
+
+%center-child {
+    display: flex;
+    justify-content: center;
+    // text-align: right;
+    align-items: center;
+}

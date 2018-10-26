@@ -8,31 +8,37 @@ import {auth} from '../store'
  */
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  console.log(name)
+  console.log(error)
   const formInputDiv = input => {
     const displayInput = input.charAt(0).toUpperCase() + input.slice(1)
-    if(name === 'login' && input === 'username') return null
+    if(name === 'login' && input === 'username') return 
     else return (
-      <div>
-        <label htmlFor={input}>
-          <small>{displayInput}</small>
-        </label>
-        <input name={input} type={input === 'password' ? "password" : "text"} />
+      <div className="form-input">
+        <div>
+          <label htmlFor={input} className="form-input-title">
+            <small>{displayInput}</small>
+          </label>
+        </div>
+        <div>
+          <input className="form-input-box" name={input} type={input === 'password' ? "password" : "text"}/>
+        </div>
       </div>
     )
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className="form">
+      <h1 className="form-title">Welcome to Dungeon Master</h1>
+      <h2 className="form-description">A toolkit for DMs</h2>
+      <form onSubmit={handleSubmit} name={name} className="form-inputs">
         {formInputDiv('username')}
         {formInputDiv('email')}
         {formInputDiv('password')}
-        <div>
-          <button type="submit">{displayName}</button>
+        <div className="form-submit">
+          <button type="submit" className="form-submit-button">{displayName}</button>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      {error && error.response && <div className="form-error"> {error.response.data} </div>}
+      {/* <a href="/auth/google">{displayName} with Google</a> */}
     </div>
   )
 }
@@ -63,9 +69,10 @@ const mapSignup = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
+      console.log(evt.target.password.value)
       evt.preventDefault()
       const formName = evt.target.name
-      const username = evt.target.username.value
+      const username = evt.target.username ? evt.target.username.value : null
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(auth(username, email, password, formName))
