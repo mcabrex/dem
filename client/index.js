@@ -10,7 +10,6 @@ import './style/index.scss'
 // establishes socket connection
 import './socket'
 
-// const render = () => {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
@@ -19,10 +18,3 @@ import './socket'
     </Provider>,
     document.getElementById('app')
   )
-// }
-
-// render()
-
-// if (module.hot) {
-//   module.hot.accept('./app', render);
-// }
