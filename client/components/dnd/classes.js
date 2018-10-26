@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getClasses} from '../store'
+import {getClasses} from '../../store'
 /**
  * COMPONENT
  */
@@ -11,7 +11,6 @@ export class Classes extends Component {
   }
   render(){
     const { error, loading, classes } = this.props;    
-    console.log('classes',classes)
 
     if (error) {
       return <div>Error! {error.message}</div>;
@@ -22,13 +21,11 @@ export class Classes extends Component {
     }
 
     return (
-      <div className="userhome">
-        <ul>
+        <div className="classes">
           {
-            classes.map( dndClass => <li key={dndClass.name}>{dndClass.name}</li> )
+            classes.map( dndClass => <div key={dndClass.name} className="classes-name">{dndClass.name}</div> )
           }
-        </ul>
-      </div>
+        </div>
     )
   }
 }

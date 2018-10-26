@@ -1,5 +1,7 @@
 @import './navbar.scss';
 @import './form.scss';
+@import './classes.scss';
+@import './mixins';
 
 body {
   width: 100vw;
@@ -15,4 +17,8 @@ body {
   grid-template-columns: 20% 80%;
   font-family: 'Cinzel Decorative', cursive;
   color: white;
+}
+
+.content {
+  @include background-pic("https://vectr.com/mcabrex/b7Kukj5tU.svg?width=640&height=640&select=b7Kukj5tUpage0&source=page",100%);
 }
