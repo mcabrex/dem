@@ -28,7 +28,7 @@
     }
     &-section {
         @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
-        @include div-hover(rgb(29,29,29));
+        @extend %shadow;
         height: 70vh;
         overflow: auto;
         color: rgb(255, 253, 239);

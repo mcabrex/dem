@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../../history'
 
 /**
  * ACTION TYPES
@@ -6,14 +7,17 @@ import axios from 'axios'
 const GET_SKILLS_BEGIN = 'GET_SKILLS_BEGIN'
 const GET_SKILLS_SUCCESS = 'GET_SKILLS_SUCCESS'
 const GET_SKILLS_FAILURE = 'GET_SKILLS_FAILURE'
+const SEARCH_ALL_SKILLS = 'SEARCH_ALL_SKILLS'
 
 /**
  * INITIAL STATE
  */
 const defaultSkills = {
+  originalItems: [],
   items: [],
   loading: false,
-  error: null
+  error: null,
+  query: '',
 }
 
 /**
@@ -22,7 +26,7 @@ const defaultSkills = {
 const getSkillsBegin = () => ({type: GET_SKILLS_BEGIN})
 const getSkillsSuccess = skillsInfo => ({type: GET_SKILLS_SUCCESS, payload: {skillsInfo}})
 const getSkillsFailure = error => ({type: GET_SKILLS_FAILURE, error})
-
+const searchAllSkills = query => ({type: SEARCH_ALL_SKILLS, query})
 /**
  * THUNK CREATORS
  */
@@ -41,6 +45,12 @@ export const getSkills = () => async dispatch => {
     console.error(err)
     dispatch(getSkillsFailure(err))
   }
+}
+
+export const searchSkills = query => dispatch => {
+  const searchQuery = query.target.value;
+  dispatch(searchAllSkills(searchQuery))
+  return query;
 }
 
 /**
@@ -63,6 +73,7 @@ export default function(state = defaultSkills, action) {
       return {
         ...state,
         loading: false,
+        originalItems: action.payload.skillsInfo,
         items: action.payload.skillsInfo
       };
     case GET_SKILLS_FAILURE:
@@ -75,7 +86,16 @@ export default function(state = defaultSkills, action) {
         ...state,
         loading: false,
         error: action.payload.error,
+        originalItems: [],
         items: []
+      };
+    case SEARCH_ALL_SKILLS:
+      return {
+        ...state,
+        items : state.originalItems.filter(item => {
+          const searchValue = item.name.toLowerCase()
+          return searchValue.indexOf(action.query) !== -1
+        })
       };
     default:
       // ALWAYS have a default case in a reducer
