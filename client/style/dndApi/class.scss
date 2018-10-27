@@ -1,0 +1,54 @@
+@import '../mixins';
+
+.dndClass {
+    display: grid;
+    grid-template-rows: 5vh 5vh 5vh 1fr 5vh;
+    grid-template-columns: 5% 1fr 5%;
+    &-header-name {
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
+        // @extend %center-child;
+        font-family: 'Uncial Antiqua', cursive;
+        font-size: 2vw;
+    }
+    &-header-hit {
+
+        font-size: 1vw;
+        grid-column: 2 / span 1;
+        grid-row: 3 / span 1;
+    }
+    &-fill {
+        grid-column: 1 / span ;
+        grid-row: 4 / span 10;
+    }
+    &-sections {
+        display: grid;
+        grid-row: 4 / span 1;
+        grid-template-columns: repeat(4, 25%);
+    }
+    &-section {
+        @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
+        @include div-hover(rgb(29,29,29));
+        height: 70vh;
+        overflow: auto;
+        color: rgb(255, 253, 239);
+        margin: 5%;
+        padding: 5%;
+        text-align: center;
+        &-title {
+            color: rgb(255, 253, 239);
+            height: 5vh;
+            @include border-style(rgb(255, 253, 239),1px,black);
+            @extend %center-child;
+            margin-bottom: 5%;
+            padding: 2.5%;
+        }
+        &-choose {
+            margin: 5%;
+            @include border-style(rgb(255, 253, 239),1px,black);
+        }
+        &-content {
+            margin-bottom: 2.5vh;
+        }
+    }
+}

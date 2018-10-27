@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getClasses} from '../store'
+import {getClasses} from '../../store'
+import {Link} from 'react-router-dom'
 /**
  * COMPONENT
  */
@@ -11,24 +12,29 @@ export class Classes extends Component {
   }
   render(){
     const { error, loading, classes } = this.props;    
-    console.log('classes',classes)
 
     if (error) {
       return <div>Error! {error.message}</div>;
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <div className="loading">Rolling the dice...</div>;
     }
 
     return (
-      <div className="userhome">
-        <ul>
+        <div className="classes">
           {
-            classes.map( dndClass => <li key={dndClass.name}>{dndClass.name}</li> )
+            classes.map( dndClass => (
+              <div key={dndClass.name} className="classes-name">
+                <Link 
+                  to={'/classes/' + dndClass.name} 
+                  className="classes-name-link">
+                  {dndClass.name}
+                </Link>
+              </div>
+            ))
           }
-        </ul>
-      </div>
+        </div>
     )
   }
 }
@@ -37,20 +43,13 @@ export class Classes extends Component {
  * CONTAINER
  */
 const mapState = state => {
+  console.log(state)
   return {
     classes: state.classes.items,
     loading: state.classes.loading,
     error: state.classes.error
   }
 }
-
-// const mapDispatch = dispatch => {
-//   return {
-//     fetchClasses(){
-//       dispatch(allClasses())
-//     } 
-//   }
-// }
 
 export default connect(mapState)(Classes)
 

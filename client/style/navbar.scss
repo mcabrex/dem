@@ -1,7 +1,7 @@
 @import './mixins';
 
 .navbar {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+  @extend %shadow;
   grid-column-start: 1;
   grid-column-end: 2;
   background-color: rgb(121,0,0);
@@ -34,8 +34,7 @@
       height: 100%;
       @include button(white,rgba(15, 15, 15, 0));
       &:hover {
-        background-color: rgb(29, 29, 29);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+        @include div-hover(rgb(29,29,29))
       }
     }
   }

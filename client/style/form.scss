@@ -1,7 +1,6 @@
 @import './mixins';
 
 .form {
-  @include background-pic("https://vectr.com/mcabrex/b7Kukj5tU.svg?width=640&height=640&select=b7Kukj5tUpage0&source=page",100%);
   &-title {
     @include text-design('Uncial Antiqua',cursive,center,rgb(141, 0, 0));
     margin-top: 10%;
