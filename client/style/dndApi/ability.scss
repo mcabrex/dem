@@ -5,6 +5,7 @@
     overflow: auto;
     &-search {
         @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
+        @extend %shadow;
         margin: 5%;
         padding: 0.5%;
         &-form {
@@ -20,7 +21,7 @@
         }
         &-query {
             grid-column: 2 / span 1;
-
+            width: 80%;
         }
     }
     &-score {
