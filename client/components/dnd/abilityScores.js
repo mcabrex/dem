@@ -24,16 +24,24 @@ export class abilityScores extends Component {
         console.log('input',abilityScores)
         if(!abilityScores) return (<div>Not Available</div>)
         return (
-            abilityScores.map(ability => (
+          abilityScores.map(ability => (
             <div key={ability.name}>
-              {ability.name}
+              <div className="ability-score">
+              <div className="ability-score-name">{ability.name}</div>
+                <div className="ability-score-full-name">{ability.full_name}</div>
+                <ul className="ability-score-descriptions">
+                  {ability.desc.map((description,ind) => (
+                    <li key={`${ind*1}description`} className="ability-score-description">{description}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))
         )
       }
 
     return (
-        <div>
+        <div className="ability">
         {
             dndInfoDivs(abilityScoresInfo)
         }

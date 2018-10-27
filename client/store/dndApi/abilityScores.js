@@ -26,13 +26,17 @@ const getAbilityScoresFailure = error => ({type: GET_ABILITY_SCORES_FAILURE, err
 /**
  * THUNK CREATORS
  */
-export const getAbilityScores = () => async dispatch => {
+export const getAbilityScores = (abilityScoreIndex) => async dispatch => {
   try {
     dispatch(getAbilityScoresBegin())
-    const res = await axios.get(`http://www.dnd5eapi.co/api/ability-scores`)
-    console.log('response',res.data.results)
-    dispatch(getAbilityScoresSuccess(res.data.results))
-    return res.data.results;
+    const responses = []
+    for(let i = 0; i < 6; i++){
+      const res = await axios.get(`http://www.dnd5eapi.co/api/ability-scores/${i+1}`)
+      responses.push(res.data)
+    }
+    console.log('responses',responses)
+    dispatch(getAbilityScoresSuccess(responses))
+    return responses;
   } catch (err) {
     console.error(err)
     dispatch(getAbilityScoresFailure(err))

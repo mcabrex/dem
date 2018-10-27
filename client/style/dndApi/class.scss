@@ -27,11 +27,10 @@
         grid-template-columns: repeat(4, 25%);
     }
     &-section {
-        @include border-style(rgb(255, 253, 239),1px);
+        @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
         @include div-hover(rgb(29,29,29));
         height: 70vh;
         overflow: auto;
-        background-color: rgb(121, 3, 3);
         color: rgb(255, 253, 239);
         margin: 5%;
         padding: 5%;
@@ -39,17 +38,14 @@
         &-title {
             color: rgb(255, 253, 239);
             height: 5vh;
-            background-color: black;
-            @include border-style(rgb(255, 253, 239),1px);
+            @include border-style(rgb(255, 253, 239),1px,black);
             @extend %center-child;
             margin-bottom: 5%;
             padding: 2.5%;
         }
         &-choose {
             margin: 5%;
-            background-color: black;
-            @include border-style(rgb(255, 253, 239),1px);
-
+            @include border-style(rgb(255, 253, 239),1px,black);
         }
         &-content {
             margin-bottom: 2.5vh;

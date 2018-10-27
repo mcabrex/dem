@@ -1,0 +1,23 @@
+@import '../mixins';
+
+.ability {
+    height: 100vh;
+    overflow: auto;
+    font-size: 75%;
+    &-score {
+        @extend %shadow;
+        &-name {
+            width: 5vw;
+            text-align: center;
+            @include border-style(rgb(255, 253, 239),1px,black);
+            padding: 0.5%;
+            margin-top: -2vh;
+        }
+        &-full-name {
+            margin: 2vh;
+        }
+        @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
+        margin: 2.5%;
+        padding: 0.5%;
+    }
+}

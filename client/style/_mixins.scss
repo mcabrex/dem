@@ -34,8 +34,9 @@
     @extend %shadow;
 }
 
-@mixin border-style($color,$width){
+@mixin border-style($color,$width,$color2){
     border-style: solid;
     border-color: $color;
     border-width: $width;
+    background-color: $color2;
 }
