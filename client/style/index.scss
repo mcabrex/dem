@@ -30,3 +30,10 @@ body {
   @include background-pic("https://vectr.com/mcabrex/b7Kukj5tU.svg?width=640&height=640&select=b7Kukj5tUpage0&source=page",100%);
   color: rgb(255, 253, 239);
 }
+
+.loading {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 45vh;
+  background-color: rgba(0, 0, 0, 0);
+}

@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getAbilityScores} from '../../store'
+import {getSkills} from '../../store'
 /**
  * COMPONENT
  */
-export class abilityScores extends Component {
+export class skills extends Component {
   componentDidMount(){
-    this.props.dispatch(getAbilityScores());
+    this.props.dispatch(getSkills());
   }
   render(){
-    const { error, loading, abilityScoresInfo } = this.props;   
+    const { error, loading, skillsInfo } = this.props;   
     console.log('props',this.props) 
     if (error) {
       return <div>Error! {error.message}</div>;
@@ -20,11 +20,11 @@ export class abilityScores extends Component {
       return <div className="loading">Rolling the dice...</div>;
     }
 
-    const dndInfoDivs = (abilityScores) => {
-        console.log('input',abilityScores)
-        if(!abilityScores) return (<div>Not Available</div>)
+    const dndInfoDivs = (skillList) => {
+        console.log('input',skillList)
+        if(!skillList) return (<div>Not Available</div>)
         return (
-          abilityScores.map(ability => (
+            skillList.map(ability => (
             <div key={ability.name}>
               <div className="ability-score">
               <div className="ability-score-name">{ability.name}</div>
@@ -42,9 +42,7 @@ export class abilityScores extends Component {
 
     return (
         <div className="ability">
-        {
-            dndInfoDivs(abilityScoresInfo)
-        }
+            {dndInfoDivs(skillsInfo)}
         </div>
     )
   }
@@ -55,17 +53,17 @@ export class abilityScores extends Component {
  */
 const mapState = state => {
   return {
-    abilityScoresInfo: state.abilityScores.items,
-    loading: state.abilityScores.loading,
-    error: state.abilityScores.error
+    skillsInfo: state.skills.items,
+    loading: state.skills.loading,
+    error: state.skills.error
   }
 }
 
-export default connect(mapState)(abilityScores)
+export default connect(mapState)(skills)
 
 /**
  * PROP TYPES
 //  */
-abilityScores.propTypes = {
+skills.propTypes = {
   fetchClasses: PropTypes.func
 }

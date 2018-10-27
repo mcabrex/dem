@@ -3,21 +3,24 @@
 .ability {
     height: 100vh;
     overflow: auto;
-    font-size: 75%;
     &-score {
         @extend %shadow;
+        @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
+        margin: 2.5%;
+        padding: 0.5%;
         &-name {
-            width: 5vw;
+            // width: 100%;
             text-align: center;
             @include border-style(rgb(255, 253, 239),1px,black);
             padding: 0.5%;
             margin-top: -2vh;
+            font-family: 'Milonga', cursive;
         }
         &-full-name {
             margin: 2vh;
         }
-        @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
-        margin: 2.5%;
-        padding: 0.5%;
+        &-description {
+            font-family: 'Milonga', cursive;
+        }
     }
 }

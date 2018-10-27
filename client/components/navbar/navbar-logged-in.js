@@ -18,6 +18,9 @@ const NavbarLoggedIn = ({handleClick}) => {
         <Link to="/ability-score" className="navbar-items-link">Ability Score</Link>
       </div>
       <div className="navbar-items-div">
+        <Link to="/skills" className="navbar-items-link">Skills</Link>
+      </div>
+      <div className="navbar-items-div">
         <Link to="/classes" className="navbar-items-link">Classes</Link>
       </div>
       <div className="navbar-items-div">

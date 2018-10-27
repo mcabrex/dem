@@ -18,7 +18,7 @@ export class dndClass extends Component {
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <div className="loading">Rolling the dice...</div>;
     }
 
     const dndInfoDivs = (proficiencies) => {
