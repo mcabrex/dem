@@ -35,11 +35,29 @@ export class dndClass extends Component {
     const dndProficiencyChoices = (proficiencyChoices) => {
       if(!proficiencyChoices) return (<div>Not Available</div>)
       return (
-        proficiencyChoices[0].from.map(proficiency => (
-          <div key={proficiency.name} className="dndClass-section-content">
-            {proficiency.name.slice(6,proficiency.length)}
-          </div>
-        ))
+        proficiencyChoices.map((choices,ind) => {
+          return(
+            <div key={`${ind*1}choices.choose${choices.choose}`}>
+              <div className="dndClass-section-choose">Choose: {choices.choose}</div>
+              {choices.from.map(proficiency =>{
+                if(proficiency.name.slice(0,6) === 'Skill:'){
+                  //if it's a skill return without the word skill
+                  return (
+                    <div key={proficiency.name} className="dndClass-section-content">
+                      {proficiency.name.slice(7,proficiency.length)}
+                    </div>
+                  )
+                } else {
+                  return(
+                    <div key={proficiency.name} className="dndClass-section-content">
+                      {proficiency.name}
+                    </div>
+                  )
+                }
+              })}
+            </div>
+          )
+        })
       )
     }
 
@@ -47,7 +65,7 @@ export class dndClass extends Component {
         <div className="dndClass">
           <div className="dndClass-header-name">{dndClassInfo.name}</div>
           <div className="dndClass-header-hit">Hit Die: {dndClassInfo.hit_die}</div>
-          <div className="dndClass-fill"></div>
+          <div className="dndClass-fill" />
           <div className="dndClass-sections">
             <div className="dndClass-section">
               <div className="dndClass-section-title">Proficiency Skill Choices</div>

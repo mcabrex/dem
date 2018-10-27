@@ -6,6 +6,7 @@
 export {default as Navbar} from './navbar/navbar'
 export {default as UserHome} from './user-home'
 export {default as UserCampaigns} from './user-campaigns'
+export {default as AbilityScores} from './dnd/abilityScores'
 export {default as Classes} from './dnd/classes'
 export {default as dndClass} from './dnd/dndClass'
 export {Login, Signup} from './auth-form'
