@@ -1,7 +1,12 @@
 @import './navbar.scss';
 @import './form.scss';
-@import './classes.scss';
+@import './dndApi/classes.scss';
+@import './dndApi/class.scss';
 @import './mixins';
+
+// font-family: 'Cinzel Decorative', cursive;
+// font-family: 'Milonga', cursive;
+// font-family: 'Uncial Antiqua', cursive;
 
 body {
   width: 100vw;
@@ -16,9 +21,11 @@ body {
   display: grid;
   grid-template-columns: 20% 80%;
   font-family: 'Cinzel Decorative', cursive;
-  color: white;
+  color: rgb(255, 253, 239);
 }
 
 .content {
+  height: 100%;
   @include background-pic("https://vectr.com/mcabrex/b7Kukj5tU.svg?width=640&height=640&select=b7Kukj5tUpage0&source=page",100%);
+  color: rgb(255, 253, 239);
 }

@@ -22,6 +22,20 @@
 %center-child {
     display: flex;
     justify-content: center;
-    // text-align: right;
     align-items: center;
+}
+
+%shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+}
+
+@mixin div-hover ($background-color){
+    background-color: $background-color;
+    @extend %shadow;
+}
+
+@mixin border-style($color,$width){
+    border-style: solid;
+    border-color: $color;
+    border-width: $width;
 }
