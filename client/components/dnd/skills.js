@@ -1,13 +1,19 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getSkills, searchSkills} from '../../store'
+import {getSkills, searchSkills, searchedSkill} from '../../store'
 /**
  * COMPONENT
  */
 export class skills extends Component {
-  componentDidMount() {
-    this.props.dispatch(getSkills())
+  componentDidMount(){
+    const url = this.props.location.search;
+    const dndSkillName = url.slice(3,url.length)
+    console.log('url',dndSkillName)
+    dndSkillName.length ? this.props.dispatch(searchedSkill(dndSkillName)) : this.props.dispatch(getSkills())
+  }
+  componentDidUpdate(){
+
   }
   render() {
     const {error, loading, skillsInfo} = this.props

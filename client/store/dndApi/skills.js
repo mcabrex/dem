@@ -1,6 +1,5 @@
 import axios from 'axios'
 import history from '../../history'
-
 /**
  * ACTION TYPES
  */
@@ -8,7 +7,7 @@ const GET_SKILLS_BEGIN = 'GET_SKILLS_BEGIN'
 const GET_SKILLS_SUCCESS = 'GET_SKILLS_SUCCESS'
 const GET_SKILLS_FAILURE = 'GET_SKILLS_FAILURE'
 const SEARCH_ALL_SKILLS = 'SEARCH_ALL_SKILLS'
-
+const SEARCHED_SKILLS = 'SEARCHED_SKILLS'
 /**
  * INITIAL STATE
  */
@@ -19,7 +18,6 @@ const defaultSkills = {
   error: null,
   query: '',
 }
-
 /**
  * ACTION CREATORS
  */
@@ -27,6 +25,7 @@ const getSkillsBegin = () => ({type: GET_SKILLS_BEGIN})
 const getSkillsSuccess = skillsInfo => ({type: GET_SKILLS_SUCCESS, payload: {skillsInfo}})
 const getSkillsFailure = error => ({type: GET_SKILLS_FAILURE, error})
 const searchAllSkills = query => ({type: SEARCH_ALL_SKILLS, query})
+const searchSkill = searchedQuery => ({type: SEARCHED_SKILLS, searchedQuery})
 /**
  * THUNK CREATORS
  */
@@ -50,13 +49,30 @@ export const getSkills = () => async dispatch => {
 export const searchSkills = query => dispatch => {
   const searchQuery = query.target.value;
   dispatch(searchAllSkills(searchQuery))
+  searchQuery.length ? history.push(`/skills?q=${searchQuery}`) : history.push('/skills')
   return query;
 }
 
+export const searchedSkill = query => async dispatch => {
+  try {
+    dispatch(getSkillsBegin())
+    const responses = []
+    const count = await axios.get('http://www.dnd5eapi.co/api/skills')
+    for(let i = 0; i < count.data.count; i++){
+      const res = await axios.get(`http://www.dnd5eapi.co/api/skills/${i+1}`)
+      responses.push(res.data)
+    }
+    dispatch(getSkillsSuccess(responses))
+    dispatch(searchSkill(query))
+    return query;
+  } catch (err) {
+    console.error(err)
+    dispatch(getSkillsFailure(err))
+  }
+}
 /**
  * REDUCER
  */
-
 export default function(state = defaultSkills, action) {
   switch (action.type) {
     case GET_SKILLS_BEGIN:
@@ -89,12 +105,20 @@ export default function(state = defaultSkills, action) {
         originalItems: [],
         items: []
       };
-    case SEARCH_ALL_SKILLS:
+      case SEARCH_ALL_SKILLS:
       return {
         ...state,
         items : state.originalItems.filter(item => {
           const searchValue = item.name.toLowerCase()
-          return searchValue.indexOf(action.query) !== -1
+          return searchValue.indexOf(action.query.toLowerCase()) !== -1
+        })
+      };
+      case SEARCHED_SKILLS:
+      return {
+        ...state,
+        items : state.originalItems.filter(item => {
+          const searchValue = item.name.toLowerCase()
+          return searchValue.indexOf(action.searchedQuery.toLowerCase()) !== -1
         })
       };
     default:
