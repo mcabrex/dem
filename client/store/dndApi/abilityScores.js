@@ -41,7 +41,6 @@ export const getAbilityScores = () => async dispatch => {
       const res = await axios.get(`http://www.dnd5eapi.co/api/ability-scores/${i+1}`)
       responses.push(res.data)
     }
-    console.log('responses',responses)
     dispatch(getAbilityScoresSuccess(responses))
     return responses;
   } catch (err) {
@@ -52,7 +51,6 @@ export const getAbilityScores = () => async dispatch => {
 
 export const searchAbilityScores = query => dispatch => {
   const searchQuery = query.target.value;
-  console.log(searchQuery)
   dispatch(searchAllAbilityScores(searchQuery))
   searchQuery.length ? history.push(`/ability-score?q=${searchQuery}`) : history.push('/ability-score')
   return query;
@@ -112,7 +110,6 @@ export default function(state = defaultAbilityScores, action) {
         items: []
       };
     case SEARCH_ALL_ABILITY_SCORES:
-      console.log(state.originalItems)
       return {
         ...state,
         items : state.originalItems.filter(item => {

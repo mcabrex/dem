@@ -43,7 +43,6 @@ export class Classes extends Component {
  * CONTAINER
  */
 const mapState = state => {
-  console.log(state)
   return {
     classes: state.classes.items,
     loading: state.classes.loading,

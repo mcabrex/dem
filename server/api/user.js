@@ -3,7 +3,6 @@ const {User} = require('../db/models')
 module.exports = router
 
 router.get('/:username', async (req, res, next) => {
-  console.log(req.body)
   try {
     const user = await User.findOne({
       where: {
