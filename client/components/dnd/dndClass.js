@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getClass} from '../../store'
+import {Link} from 'react-router-dom'
+
 /**
  * COMPONENT
  */
@@ -43,13 +45,13 @@ export class dndClass extends Component {
                 if(proficiency.name.slice(0,6) === 'Skill:'){
                   //if it's a skill return without the word skill
                   return (
-                    <div key={proficiency.name} className="dndClass-section-content">
+                    <div to={`/skills?=${proficiency.name.slice(7,proficiency.length)}`} key={proficiency.name} className="dndClass-section-content">
                       {proficiency.name.slice(7,proficiency.length)}
                     </div>
                   )
                 } else {
                   return(
-                    <div key={proficiency.name} className="dndClass-section-content">
+                    <div to={`/skills?=${proficiency.name}`} key={proficiency.name} className="dndClass-section-content">
                       {proficiency.name}
                     </div>
                   )
