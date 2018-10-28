@@ -1,5 +1,6 @@
 @import './navbar.scss';
 @import './form.scss';
+@import './userhome';
 @import './dndApi/classes.scss';
 @import './dndApi/class.scss';
 @import './dndApi/ability.scss';
@@ -14,10 +15,10 @@ body {
   height: 100vh;
   margin: 0;
   font-family: sans-serif;
+  background-color: rgb(36, 36, 36);
 }
 
 .site {
-  background-color: rgb(36, 36, 36);
   height: 100vh;
   display: grid;
   grid-template-columns: 20% 80%;
@@ -35,5 +36,4 @@ body {
   text-align: center;
   vertical-align: middle;
   margin-top: 45vh;
-  background-color: rgba(0, 0, 0, 0);
 }

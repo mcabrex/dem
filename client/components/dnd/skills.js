@@ -11,9 +11,7 @@ export class skills extends Component {
     const dndSkillName = url.slice(3,url.length)
     dndSkillName.length ? this.props.dispatch(searchedSkill(dndSkillName)) : this.props.dispatch(getSkills())
   }
-  componentDidUpdate(){
 
-  }
   render() {
     const {error, loading, skillsInfo} = this.props
     if (error) {

@@ -9,9 +9,7 @@ export const UserCampaigns = props => {
   const {username} = props
 
   return (
-    <div className="userhome">
-      <div>Campaigns</div>
-    </div>
+      <div className="loading">Under Construction - The Dwarves are on strike.</div>
   )
 }
 

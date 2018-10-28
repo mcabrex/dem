@@ -65,7 +65,6 @@ export class dndClass extends Component {
         <div className="dndClass">
           <div className="dndClass-header-name">{dndClassInfo.name}</div>
           <div className="dndClass-header-hit">Hit Die: {dndClassInfo.hit_die}</div>
-          <div className="dndClass-fill" />
           <div className="dndClass-sections">
             <div className="dndClass-section">
               <div className="dndClass-section-title">Proficiency Skill Choices</div>
