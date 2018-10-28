@@ -11,13 +11,6 @@ module.exports = {
     path: __dirname,
     filename: './public/bundle.js',
   },
-  devServer: {
-    publicPath: './public/bundle.js',
-    contentBase: './public/index.html',
-    watchContentBase: true,
-    compress: true,
-    port: 8080,
-  },
   resolve: {
     extensions: ['.js', '.jsx']
   },
