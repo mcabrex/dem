@@ -36,7 +36,7 @@ class Routes extends Component {
               <Route path="/home" component={UserHome} />
               <Route path="/campaigns" component={UserCampaigns} />
               <Route path="/ability-score" component={AbilityScores} />
-              <Route path="/skills" component={Skills} />
+              <Route exact path="/skills" component={Skills} />
               <Route exact path="/classes" component={Classes} />
               <Route path="/classes/:className" component={dndClass} />
               

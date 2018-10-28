@@ -30,7 +30,6 @@ export const getClass = (dndClass) => async dispatch => {
   try {
     dispatch(getClassBegin())
     const res = await axios.get(`http://www.dnd5eapi.co/api/classes/${dndClass}`)
-    console.log('response',res.data)
     dispatch(getClassSuccess(res.data))
     return res.data;
   } catch (err) {

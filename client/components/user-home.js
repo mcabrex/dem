@@ -10,7 +10,8 @@ export const UserHome = props => {
 
   return (
     <div className="userhome">
-      <div>Welcome, {username}</div>
+      <div className="userhome-title">DUNGEON MASTER</div>
+      <div className="userhome-message">Welcome, {username}</div>
     </div>
   )
 }
