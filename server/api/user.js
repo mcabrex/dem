@@ -28,8 +28,6 @@ router.get('/:username/campaigns', async (req, res, next) => {
       }
     })
     res.json(campaign)
-
-  
   } catch (err) {
     next(err)
   }
@@ -41,7 +39,6 @@ router.post('/:username/campaigns', async (req, res, next) => {
       console.log('invalid information:', req.body)
       res.status(401).send('Invalid Campaign information, need a name!')
     } else {
-      console.log('campaign body',req.body)
       const campaign = await Campaign.create(req.body)
        res.json(campaign)
     }

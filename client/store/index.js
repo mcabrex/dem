@@ -2,7 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import campaign from './campaign'
+import campaigns from './campaign'
 import user from './user'
 import dice from './dice'
 import classes from './dndApi/classes'
@@ -11,7 +11,7 @@ import abilityScores from './dndApi/abilityScores'
 import skills from './dndApi/skills'
 
 const reducer = combineReducers({
-  user,dice,classes,dndClass,abilityScores,skills,campaign
+  user,dice,classes,dndClass,abilityScores,skills,campaigns
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

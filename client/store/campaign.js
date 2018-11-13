@@ -4,27 +4,28 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const GET_CAMPAIGN = 'GET_CAMPAIGN'
+const GET_CAMPAIGNS = 'GET_CAMPAIGNS'
 const REMOVE_CAMPAIGN = 'REMOVE_CAMPAIGN'
 
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultCampaigns = {}
 
 /**
  * ACTION CREATORS
  */
-const getCampaigns = campaigns => ({type: GET_CAMPAIGN, campaigns})
+const getCampaigns = campaigns => ({type: GET_CAMPAIGNS, campaigns})
 const removeCampaign = () => ({type: REMOVE_CAMPAIGN})
 
 /**
  * THUNK CREATORS
  */
-export const myCampaigns = (username) => async dispatch => {
+export const myCampaigns = () => async dispatch => {
   try {
-    const res = await axios.get(`/user/${username}/campaigns`)
-    dispatch(getCampaigns(res.data || defaultUser))
+    const user = await axios.get('/auth/me')
+    const res = await axios.get(`/api/user/${user.data.username}/campaigns`)
+    dispatch(getCampaigns(res.data || defaultCampaigns))
   } catch (err) {
     console.error(err)
   }
@@ -34,7 +35,8 @@ export const addCampaign = (username,userId,campaignName,campaignDescription) =>
     let res
     try {
       res = await axios.post(`/api/user/${username}/campaigns`,{userId,title:campaignName,description:campaignDescription})
-      console.log('response',res)
+      const campaignInfo = await axios.get(`/api/user/${username}/campaigns`,{userId,title:campaignName,description:campaignDescription})
+      dispatch(getCampaigns(campaignInfo.data || defaultCampaigns))
     } catch (err) {
       console.error(err)
     }
@@ -43,12 +45,12 @@ export const addCampaign = (username,userId,campaignName,campaignDescription) =>
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function(state = defaultCampaigns, action) {
   switch (action.type) {
-    case GET_CAMPAIGN:
+    case GET_CAMPAIGNS:
       return action.campaigns
     case REMOVE_CAMPAIGN:
-      return defaultUser
+      return defaultCampaigns
     default:
       return state
   }
