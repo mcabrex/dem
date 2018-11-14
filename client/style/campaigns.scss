@@ -85,6 +85,9 @@
             font-size: 1.5vh;
             padding: 1vh 1vw;
             width: 18vw;
+            @media screen and (max-width: 720px) {
+                width: 38vw;
+            }
             height: 20.5vh;
             overflow: auto;
             word-wrap: break-word;
