@@ -3,25 +3,34 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {addCampaign} from '../store'
 
-
 /**
  * COMPONENT
  */
 const AddCampaign = props => {
-  const {userId,username,handleSubmit} = props
+  const {userId, username, handleSubmit, onClick} = props
+  function submitHandler(evt){
+    handleSubmit(evt)
+    onClick(evt)
+  }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Campaign Name:
-        <input type="text" name="campaignName"/>
-      </label>
+    <form onSubmit={submitHandler}>
+      <div className="campaigns-form-name">
+        <label className="campaigns-form-name-title">
+          Campaign Name:
+        </label>
+        <input className="campaigns-form-name-input" type="text" name="campaignName" />
+      </div>
       <input type="hidden" name="username" value={username} />
-      <input type="hidden" name="userid" value={userId} />      
-      <label>
-        Campaign Description:
-        <input type="text" name="campaignDescription" />
-      </label>
-      <input type="submit" value="Submit" />
+      <input type="hidden" name="userid" value={userId} />
+      <div className="campaigns-form-description">
+        <label className="campaigns-form-description-title">
+          Campaign Description:
+        </label>
+        <textarea className="campaigns-form-description-input" type="text" name="campaignDescription" />
+      </div>
+      <div className="campaigns-form-submit">
+        <input id="submit" type="submit" value="Submit" />
+      </div>
     </form>
   )
 }
@@ -38,16 +47,22 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt){
+    handleSubmit(evt) {
       evt.preventDefault()
-      const {username,userid,campaignName,campaignDescription} = evt.target
-      console.log('evt.target',username.value,userid.value,campaignName.value,campaignDescription.value)
-      dispatch(addCampaign(username.value,userid.value,campaignName.value,campaignDescription.value))
+      const {username, userid, campaignName, campaignDescription} = evt.target
+      dispatch(
+        addCampaign(
+          username.value,
+          userid.value,
+          campaignName.value,
+          campaignDescription.value
+        )
+      )
     }
   }
 }
 
-export default connect(mapState,mapDispatch)(AddCampaign)
+export default connect(mapState, mapDispatch)(AddCampaign)
 
 /**
  * PROP TYPES

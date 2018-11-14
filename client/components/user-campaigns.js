@@ -20,7 +20,7 @@ export class UserCampaigns extends React.Component {
     this.props.loadCampaigns()
   }
 
-  clickAddCampaign() {
+  clickAddCampaign(evt) {
     let currentCampaignClicked = this.state.campaignClicked
     this.setState({campaignClicked: !currentCampaignClicked})
   }
@@ -30,9 +30,11 @@ export class UserCampaigns extends React.Component {
     const campaignBuilder = () => {
       return campaigns.map(campaign => {
         return (
-          <div key={campaign.id}>
-            <div>{campaign.title}</div>
-            <div>{campaign.description}</div>
+          <div className="campaigns-item" key={campaign.id}>
+            <div className="campaigns-item-title">{campaign.title}</div>
+            <div className="campaigns-item-description">
+              {campaign.description}
+            </div>
           </div>
         )
       })
@@ -45,9 +47,20 @@ export class UserCampaigns extends React.Component {
     //update component when redux store gets updated
     return (
       <div>
-        <div onClick={this.clickAddCampaign}>Add Campaign</div>
-        {this.state.campaignClicked ? <AddCampaign /> : null}
-        {campaignBuilder()}
+        <div className="campaigns-add" id="add" onClick={this.clickAddCampaign}>
+          +Add Campaign
+        </div>
+        <div
+          id="form"
+          className={
+            this.state.campaignClicked
+              ? 'campaigns-form-clicked'
+              : 'campaigns-form-unclicked'
+          }
+        >
+          {this.state.campaignClicked ? <AddCampaign onClick={this.clickAddCampaign}/> : null}
+        </div>
+        <div className="campaigns-container">{campaignBuilder()}</div>
       </div>
     )
   }
