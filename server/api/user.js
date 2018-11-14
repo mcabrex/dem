@@ -33,6 +33,25 @@ router.get('/:username/campaigns', async (req, res, next) => {
   }
 })
 
+router.get('/:username/campaigns/:campaignId', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+          username : req.params.username
+      }
+    })
+    const campaign = await Campaign.findAll({
+      where: {
+        userId : user.dataValues.id,
+        id: req.params.campaignId
+      }
+    })
+    res.json(campaign)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post('/:username/campaigns', async (req, res, next) => {
   try {
     if(!req.body) {

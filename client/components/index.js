@@ -5,7 +5,8 @@
  */
 export {default as Navbar} from './navbar/navbar'
 export {default as UserHome} from './user-home'
-export {default as UserCampaigns} from './user-campaigns'
+export {default as UserCampaigns} from './campaigns/user-campaigns'
+export {default as SingleCampaign} from './campaigns/single-campaign'
 export {default as AbilityScores} from './dnd/abilityScores'
 export {default as Skills} from './dnd/skills'
 export {default as Classes} from './dnd/classes'

@@ -1,70 +1,102 @@
 @import '../mixins';
 .dndClass {
-    display: grid;
-    grid-template-columns: 5% 1fr 1fr 5%;
-    grid-template-rows: 5vh 5vh 5vh 1fr 5vh;
-    grid-template-areas: "a a a a" "b c c d" "b e e d" "b f f d" "g g g g";
-    &-header-name {
-        grid-area: c;
-        font-family: 'Uncial Antiqua', cursive;
-        @media screen and (max-width: 34em) {
-            font-size: 8vw;
+    padding: 10px;
+    &-header {
+        &-name {
+            padding: 10px;
+            @include text-design('Uncial Antiqua',cursive,left,rgb(255, 253, 238));
+            background-color: rgb(141, 0, 0);
+            width: fit-content;
         }
-        @media screen and (min-width: 34em) {
-            font-size: 2vw;
-        }
-    }
-    &-header-hit {
-        grid-area: e;
-        @media screen and (max-width: 34em) {
-            font-size: 4vw;
-        }
-        @media screen and (min-width: 34em) {
-            font-size: 2vw;
-        }
-    }
-    &-sections {
-        grid-area: f;
-        @media screen and (max-width: 34em) {
-            display: grid;
-            grid-template-rows: repeat(auto-fill, 1fr);
-        }
-        @media screen and (min-width: 34em) {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        &-title {
+            border-bottom: 5px solid rgb(141, 0, 0);
         }
     }
     &-section {
-        @include border-style(rgb(255, 253, 239), 1px, rgba(121, 3, 3, 0.8));
-        @extend %shadow;
-        @media screen and (min-width: 34em) {
-            height: 70vh;
-        }
-        @media screen and (max-width: 34em) {
-            height: fit-content;
-        }
-        overflow: auto;
-        color: rgb(255, 253, 239);
-        margin: 5%;
-        padding: 5%;
-        font-size: 90%;
-        text-align: center;
+        padding: 10px;
+        padding-top: 0;
         &-title {
-            color: rgb(255, 253, 239);
-            height: 5vh;
-            @include border-style(rgb(255, 253, 239), 1px, black);
-            @extend %center-child;
-            margin-bottom: 5%;
-            padding: 2.5%;
-        }
-        &-choose {
-            margin: 5%;
-            @include border-style(rgb(255, 253, 239), 1px, black);
-        }
-        &-content {
-            @media screen and (min-width: 34em) {
-                margin-bottom: 2.5vh;
+            &-main {
+                text-shadow: 1px 1px 1px white;
+                color: rgb(141, 0, 0);
+            }
+            &-sub {
+                color: rgb(141, 0, 0);
+                text-shadow: 1px 1px black;
+                width: fit-content;
             }
         }
     }
+    // display: grid;
+    // grid-template-columns: 5% 1fr 1fr 5%;
+    // grid-template-rows: 5vh 5vh 5vh 1fr 5vh;
+    // grid-template-areas: "a a a a" "b c c d" "b e e d" "b f f d" "g g g g";
+    // &-header {
+    //     &-name {
+    //         // grid-area: c;
+    //         font-family: 'Uncial Antiqua', cursive;
+    //         @media screen and (max-width: 34em) {
+    //             font-size: 8vw;
+    //         }
+    //         @media screen and (min-width: 34em) {
+    //             font-size: 2vw;
+    //         }
+    //     }
+    //     &-description {
+
+    //     }
+    //     &-hit {
+    //         // grid-area: e;
+    //         @media screen and (max-width: 34em) {
+    //             font-size: 4vw;
+    //         }
+    //         @media screen and (min-width: 34em) {
+    //             font-size: 2vw;
+    //         }
+    //     }
+    // }
+    // &-sections {
+    //     // grid-area: f;
+    //     @media screen and (max-width: 34em) {
+    //         display: grid;
+    //         grid-template-rows: repeat(auto-fill, 1fr);
+    //     }
+    //     @media screen and (min-width: 34em) {
+    //         display: grid;
+    //         grid-template-columns: repeat(4, 1fr);
+    //     }
+    // }
+    // &-section {
+    //     @include border-style(rgb(255, 253, 239), 1px, rgba(121, 3, 3, 0.8));
+    //     @extend %shadow;
+    //     @media screen and (min-width: 34em) {
+    //         height: 70vh;
+    //     }
+    //     @media screen and (max-width: 34em) {
+    //         height: fit-content;
+    //     }
+    //     overflow: auto;
+    //     color: rgb(255, 253, 239);
+    //     margin: 5%;
+    //     padding: 5%;
+    //     font-size: 90%;
+    //     text-align: center;
+    //     &-title {
+    //         color: rgb(255, 253, 239);
+    //         height: 5vh;
+    //         @include border-style(rgb(255, 253, 239), 1px, black);
+    //         @extend %center-child;
+    //         margin-bottom: 5%;
+    //         padding: 2.5%;
+    //     }
+    //     &-choose {
+    //         margin: 5%;
+    //         @include border-style(rgb(255, 253, 239), 1px, black);
+    //     }
+    //     &-content {
+    //         @media screen and (min-width: 34em) {
+    //             margin-bottom: 2.5vh;
+    //         }
+    //     }
+    // }
 }

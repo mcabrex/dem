@@ -6,7 +6,7 @@ import {
   Login, 
   Signup, 
   UserHome, 
-  UserCampaigns, 
+  UserCampaigns, SingleCampaign,
   Classes, dndClass, 
   AbilityScores, 
   Skills
@@ -34,7 +34,8 @@ class Routes extends Component {
             <Switch>
               {/* Routes placed here are only available after logging in */}
               <Route path="/home" component={UserHome} />
-              <Route path="/campaigns" component={UserCampaigns} />
+              <Route exact path="/campaigns" component={UserCampaigns} />
+              <Route path="/campaigns/:campaignId" component={SingleCampaign} />
               <Route path="/ability-score" component={AbilityScores} />
               <Route exact path="/skills" component={Skills} />
               <Route exact path="/classes" component={Classes} />

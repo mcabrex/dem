@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {myCampaigns} from '../store'
+import {myCampaigns} from '../../store'
 import AddCampaign from './add-campaign'
 /**
  * COMPONENT
@@ -27,15 +27,18 @@ export class UserCampaigns extends React.Component {
 
   render() {
     const campaigns = this.props.campaigns
+    console.log('campaigns',campaigns)
     const campaignBuilder = () => {
       return campaigns.map(campaign => {
         return (
-          <div className="campaigns-item" key={campaign.id}>
-            <div className="campaigns-item-title">{campaign.title}</div>
-            <div className="campaigns-item-description">
-              {campaign.description}
+          <Link to={`/campaigns/${campaign.id}`} id={campaign.id} key={campaign.id}>
+            <div className="campaigns-item">
+              <div className="campaigns-item-title">{campaign.title}</div>
+              <div className="campaigns-item-description">
+                {campaign.description}
+              </div>
             </div>
-          </div>
+          </Link>
         )
       })
     }

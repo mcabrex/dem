@@ -21,6 +21,7 @@ export class Classes extends Component {
       return <div className="loading">Rolling the dice...</div>;
     }
 
+    console.log('classes',classes)
     return (
         <div className="classes">
           {
