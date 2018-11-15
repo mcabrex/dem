@@ -8,6 +8,7 @@ import {
   UserHome, 
   UserCampaigns, SingleCampaign,
   Classes, dndClass, 
+  Races, dndRace,
   AbilityScores, 
   Skills
 } from './components'
@@ -40,7 +41,9 @@ class Routes extends Component {
               <Route exact path="/skills" component={Skills} />
               <Route exact path="/classes" component={Classes} />
               <Route path="/classes/:className" component={dndClass} />
-              
+              <Route exact path="/races" component={Races} />
+              <Route path="/races/:raceName" component={dndRace} />
+
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getClass} from '../../store'
-import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -28,9 +27,7 @@ export class dndClass extends Component {
       dndClassInfo.equipment.slice(97,dndClassInfo.equipment.length)
         .split("").filter(letter => letter!=="*").join("")
         .split(" \n ").filter((ele,ind)=> ind > 0)
-    
-    console.log('props',dndEquipmentOptions)
-
+        
     return (
         <div className="dndClass">
           <h1 className="dndClass-header-name">{dndClassInfo.name}</h1>

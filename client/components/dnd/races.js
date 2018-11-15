@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getClasses} from '../../store'
+import {getRaces} from '../../store'
 import {Link} from 'react-router-dom'
 /**
  * COMPONENT
  */
-export class Classes extends Component {
+export class Races extends Component {
   componentDidMount(){
-    this.props.dispatch(getClasses());
+    this.props.dispatch(getRaces());
   }
   render(){
-    const { error, loading, classes } = this.props;    
+    const { error, loading, races } = this.props;    
 
     if (error) {
       return <div>Error! {error.message}</div>;
@@ -24,12 +24,12 @@ export class Classes extends Component {
     return (
         <div className="classes">
           {
-            classes.map( dndClass => (
-              <div key={dndClass.name} className="classes-name">
+            races.map( dndRace => (
+              <div key={dndRace.name} className="classes-name">
                 <Link 
-                  to={'/classes/' + dndClass.name} 
+                  to={'/races/' + dndRace.name} 
                   className="classes-name-link">
-                  {dndClass.name}
+                  {dndRace.name}
                 </Link>
               </div>
             ))
@@ -44,17 +44,17 @@ export class Classes extends Component {
  */
 const mapState = state => {
   return {
-    classes: state.classes.items,
-    loading: state.classes.loading,
-    error: state.classes.error
+    races: state.races.items,
+    loading: state.races.loading,
+    error: state.races.error
   }
 }
 
-export default connect(mapState)(Classes)
+export default connect(mapState)(Races)
 
 /**
  * PROP TYPES
 //  */
-Classes.propTypes = {
+Races.propTypes = {
   fetchClasses: PropTypes.func
 }
