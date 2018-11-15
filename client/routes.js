@@ -10,8 +10,6 @@ import {
   Classes, dndClass, 
   Spells, dndSpell,
   Races, dndRace,
-  AbilityScores, 
-  Skills
 } from './components'
 import {me} from './store'
 
@@ -38,15 +36,12 @@ class Routes extends Component {
               <Route path="/home" component={UserHome} />
               <Route exact path="/campaigns" component={UserCampaigns} />
               <Route path="/campaigns/:campaignId" component={SingleCampaign} />
-              <Route path="/ability-score" component={AbilityScores} />
-              <Route exact path="/skills" component={Skills} />
               <Route exact path="/classes" component={Classes} />
               <Route path="/classes/:className" component={dndClass} />
               <Route exact path="/races" component={Races} />
               <Route path="/races/:raceName" component={dndRace} />
               <Route exact path="/spells" component={Spells} />
               <Route path="/spells/:spellName" component={dndSpell} />
-
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

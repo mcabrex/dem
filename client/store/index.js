@@ -10,11 +10,16 @@ import spells from './dndApi/spells'
 import races from './dndApi/races'
 import dndClass from './dndApi/dndClass'
 import dndRace from './dndApi/dndRace'
-import abilityScores from './dndApi/abilityScores'
-import skills from './dndApi/skills'
 
 const reducer = combineReducers({
-  user,dice,classes,spells,races,dndClass,dndRace,abilityScores,skills,campaigns
+  user,
+  dice,
+  classes,
+  spells,
+  races,
+  dndClass,
+  dndRace,
+  campaigns
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -30,5 +35,3 @@ export * from './dndApi/spells'
 export * from './dndApi/races'
 export * from './dndApi/dndClass'
 export * from './dndApi/dndRace'
-export * from './dndApi/abilityScores'
-export * from './dndApi/skills'

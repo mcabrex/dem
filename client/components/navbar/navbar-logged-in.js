@@ -15,12 +15,6 @@ const NavbarLoggedIn = ({handleClick}) => {
         <Link to="/campaigns" className="navbar-items-link">Campaigns</Link>
       </div>
       <div className="navbar-items-div">
-        <Link to="/ability-score" className="navbar-items-link">Ability Score</Link>
-      </div>
-      <div className="navbar-items-div">
-        <Link to="/skills" className="navbar-items-link">Skills</Link>
-      </div>
-      <div className="navbar-items-div">
         <Link to="/races" className="navbar-items-link">Races</Link>
       </div>
       <div className="navbar-items-div">
