@@ -40,9 +40,7 @@ export class dndRace extends Component {
       <div className="dndClass">
         <h1 className="dndClass-header-name">{dndRaceinfo["Name:"]}</h1>
         <h2 className="dndClass-header-title">Racial Traits</h2>
-        {
-            raceBuilder(dndRaceinfo)
-        }
+        {raceBuilder(dndRaceinfo)}
       </div>
     )
   }

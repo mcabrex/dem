@@ -1,0 +1,38 @@
+@import '../mixins';
+
+.spells {
+    &-search {
+        &-form {
+            @include border-style(rgb(255, 253, 239),1px,rgba(121, 3, 3, 0.8));
+            @extend %shadow;
+            padding: 0.5%;
+            margin: 10px;
+            display: grid;
+            grid-template-columns: 1fr 80%;        
+        }
+        &-title {
+            width: 100%;
+            padding: 0.5%;
+            @extend %center-child;
+            grid-column: 1 / span 1;
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        &-query {
+            grid-column: 2 / span 1;
+            width: 80%;
+        }
+    }
+    &-name {
+        height: 100%;
+        &:hover {
+            @include div-hover(rgb(121, 0, 0))
+        }
+        &-link {
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            @extend %center-child;
+        }
+    }
+}

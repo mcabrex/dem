@@ -27,6 +27,9 @@ const NavbarLoggedIn = ({handleClick}) => {
         <Link to="/classes" className="navbar-items-link">Classes</Link>
       </div>
       <div className="navbar-items-div">
+        <Link to="/spells" className="navbar-items-link">Spells</Link>
+      </div>
+      <div className="navbar-items-div">
         <a href="#" onClick={handleClick} className="navbar-items-link">Logout</a>
       </div>
     </div>
