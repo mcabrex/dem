@@ -8,7 +8,7 @@ import {
   UserHome, 
   UserCampaigns, SingleCampaign,
   Classes, dndClass, 
-  Spells,
+  Spells, dndSpell,
   Races, dndRace,
   AbilityScores, 
   Skills
@@ -45,6 +45,7 @@ class Routes extends Component {
               <Route exact path="/races" component={Races} />
               <Route path="/races/:raceName" component={dndRace} />
               <Route exact path="/spells" component={Spells} />
+              <Route path="/spells/:spellName" component={dndSpell} />
 
             </Switch>
           )}

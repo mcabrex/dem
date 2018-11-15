@@ -9,12 +9,14 @@ const GET_SPELLS_SUCCESS = 'GET_SPELLS_SUCCESS'
 const GET_SPELLS_FAILURE = 'GET_SPELLS_FAILURE'
 const SEARCH_ALL_SPELLS = 'SEARCH_ALL_SPELLS'
 const SEARCHED_SPELLS = 'SEARCHED_SPELLS'
+const GET_SPELL = 'GET_SPELL'
 
 /**
  * INITIAL STATE
  */
 const defaultSpells = {
-  originalItmes: [],
+  currentSpell: "",
+  originalItems: [],
   items: [],
   loading: false,
   error: null
@@ -31,6 +33,7 @@ const getSpellsSuccess = spells => ({
 const getSpellsFailure = error => ({type: GET_SPELLS_FAILURE, error})
 const searchAllSpells = query => ({type: SEARCH_ALL_SPELLS, query})
 const searchSpell = searchedQuery => ({type: SEARCHED_SPELLS, searchedQuery})
+const getSpell = (spellName,response) => ({type: GET_SPELL, spellName,response})
 
 /**
  * THUNK CREATORS
@@ -48,6 +51,24 @@ export const getSpells = () => async dispatch => {
     }
     dispatch(getSpellsSuccess(responses))
     return responses
+  } catch (err) {
+    console.error(err)
+    dispatch(getSpellsFailure(err))
+  }
+}
+
+export const getCurrentSpell = (spellName) => async dispatch => {
+  try {
+    let res = await axios.get('https://api-beta.open5e.com/spells/')
+    let page = 2
+    const responses = []
+    while (res.data.next) {
+      responses.push(res.data.results)
+      res = await axios.get(res.data.next)
+      page++
+    }
+    dispatch(getSpell(spellName,responses))
+    
   } catch (err) {
     console.error(err)
     dispatch(getSpellsFailure(err))
@@ -145,7 +166,16 @@ export default function(state = defaultSpells, action) {
           // return searchValue.indexOf(action.query.toLowerCase()) !== -1
         })
       }
-
+    case GET_SPELL:
+      return {
+        ...state,
+        currentSpell: action.response.map((spellsArr,ind,arr) => {
+          return spellsArr.filter(spell =>{
+            const searchValue = spell.name.toLowerCase()
+            return searchValue.indexOf(action.spellName.toLowerCase()) !== -1
+          })
+        }).filter(spells => spells.length > 0)[0][0],
+      }
     default:
       // ALWAYS have a default case in a reducer
       return state
