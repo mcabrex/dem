@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {myCampaign} from '../../store'
-import AddCampaign from './add-campaign'
+import DeleteCampaignDiv from './delete-campaign'
 /**
  * COMPONENT
  */
@@ -13,36 +13,25 @@ export class SingleCampaign extends React.Component {
     this.state = {
       campaignClicked: false
     }
-    this.clickAddCampaign = this.clickAddCampaign.bind(this)
+    this.clickDeleteCampaign = this.clickDeleteCampaign.bind(this)
+    this.tester = this.tester.bind(this)
   }
 
   componentDidMount() {
     this.props.loadCampaign(this.props.match.params.campaignId)
   }
 
-  clickAddCampaign(evt) {
+  clickDeleteCampaign(evt) {
     let currentCampaignClicked = this.state.campaignClicked
     this.setState({campaignClicked: !currentCampaignClicked})
   }
 
+  tester(){
+    console.log('mic check?')
+  }
+
   render() {
     const campaigns = this.props.campaigns
-    console.log('campaigns',campaigns)
-    const campaignBuilder = () => {
-      return campaigns.map(campaign => {
-        return (
-          <Link to={`/campaigns/${campaign.id}`} key={campaign.id}>
-            <div className="campaigns-item">
-              <div className="campaigns-item-title">{campaign.title}</div>
-              <div className="campaigns-item-description">
-                {campaign.description}
-              </div>
-            </div>
-          </Link>
-        )
-      })
-    }
-
     if (!campaigns.length) {
       return <div className="loading">Rolling the dice...</div>
     }
@@ -50,18 +39,21 @@ export class SingleCampaign extends React.Component {
     //update component when redux store gets updated
     return (
       <div>
-        <div className="campaigns-add" id="add" onClick={this.clickAddCampaign}>
+        <div className="campaigns-add" id="add">
           +Add Campaign
         </div>
+        <div onClick={this.clickDeleteCampaign} className="campaigns-add">
+          -Delete Campaign
+        </div>
         <div
-          id="form"
           className={
             this.state.campaignClicked
               ? 'campaigns-form-clicked'
               : 'campaigns-form-unclicked'
           }
         >
-          {this.state.campaignClicked ? <AddCampaign onClick={this.clickAddCampaign}/> : null}
+          {/* anything in this div is now a popup onclick */}
+          <DeleteCampaignDiv onClick={this.clickDeleteCampaign}/>
         </div>
         <div>{campaigns[0].title}</div>
         <div>{campaigns[0].description}</div>
@@ -75,7 +67,6 @@ export class SingleCampaign extends React.Component {
  * CONTAINER
  */
 const mapState = state => {
-  console.log('state', state)
   return {
     userId: state.user.id,
     campaigns: state.campaigns
@@ -86,7 +77,7 @@ const mapDispatch = dispatch => {
   return {
     loadCampaign(campaignId) {
       dispatch(myCampaign(campaignId))
-    }
+    },
   }
 }
 

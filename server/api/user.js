@@ -69,3 +69,29 @@ router.post('/:username/campaigns', async (req, res, next) => {
     }
   }
 })
+
+router.delete('/:username/campaigns/:campaignId', async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+          username : req.params.username
+      }
+    })
+    await Campaign.destroy({
+      where: {
+        userId : user.dataValues.id,
+        id: req.params.campaignId
+      }
+    })
+    const campaigns = await Campaign.findAll({
+      where: {
+        userId : user.dataValues.id
+      }
+    })
+
+    res.json(campaigns)
+  } catch (err) {
+    next(err)
+  }
+})
+

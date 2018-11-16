@@ -11,7 +11,7 @@ const REMOVE_CAMPAIGN = 'REMOVE_CAMPAIGN'
 /**
  * INITIAL STATE
  */
-const defaultCampaigns = {}
+const defaultCampaigns = []
 
 /**
  * ACTION CREATORS
@@ -23,6 +23,17 @@ const removeCampaign = () => ({type: REMOVE_CAMPAIGN})
 /**
  * THUNK CREATORS
  */
+export const deleteCampaign = (campaignId) => async dispatch => {
+  try {
+    const user = await axios.get('/auth/me')
+    const res = await axios.delete(`/api/user/${user.data.username}/campaigns/${campaignId}`)
+    dispatch(getCampaigns(res.data || defaultCampaigns))
+    history.push('/campaigns')
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const myCampaigns = () => async dispatch => {
   try {
     const user = await axios.get('/auth/me')

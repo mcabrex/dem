@@ -22,7 +22,7 @@ export class dndRace extends Component {
     if (loading) {
       return <div className="loading">Rolling the dice...</div>
     }
-
+    console.log('raceinfo',dndRaceinfo)
     const raceBuilder = raceObj => {
       return Object.keys(raceObj).map(title => {
         if(title === "Name:") return null;

@@ -27,24 +27,22 @@ export class UserCampaigns extends React.Component {
 
   render() {
     const campaigns = this.props.campaigns
-    console.log('campaigns',campaigns)
     const campaignBuilder = () => {
       return campaigns.map(campaign => {
         return (
-          <Link to={`/campaigns/${campaign.id}`} id={campaign.id} key={campaign.id}>
-            <div className="campaigns-item">
-              <div className="campaigns-item-title">{campaign.title}</div>
-              <div className="campaigns-item-description">
-                {campaign.description}
-              </div>
+          <Link
+            to={`/campaigns/${campaign.id}`}
+            className="campaigns-item"
+            id={campaign.id}
+            key={campaign.id}
+          >
+            <div className="campaigns-item-title">{campaign.title}</div>
+            <div className="campaigns-item-description">
+              {campaign.description}
             </div>
           </Link>
         )
       })
-    }
-
-    if (!campaigns.length) {
-      return <div className="loading">Rolling the dice...</div>
     }
 
     //update component when redux store gets updated
@@ -61,9 +59,11 @@ export class UserCampaigns extends React.Component {
               : 'campaigns-form-unclicked'
           }
         >
-          {this.state.campaignClicked ? <AddCampaign onClick={this.clickAddCampaign}/> : null}
+          {this.state.campaignClicked ? (
+            <AddCampaign onClick={this.clickAddCampaign} />
+          ) : null}
         </div>
-        <div className="campaigns-container">{campaignBuilder()}</div>
+        <div className="campaigns-container">{campaigns.length > 0 ? campaignBuilder() : null}</div>
       </div>
     )
   }
@@ -73,7 +73,7 @@ export class UserCampaigns extends React.Component {
  * CONTAINER
  */
 const mapState = state => {
-  console.log('state', state)
+  console.log('state',state)
   return {
     userId: state.user.id,
     campaigns: state.campaigns

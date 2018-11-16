@@ -2,7 +2,7 @@
 .campaigns {
     &-add {
         &:hover {
-        @include div-hover(rgb(121, 0, 0));
+        @include div-hover($red);
         }
         margin: 2.5%;
         width: fit-content;
@@ -65,7 +65,7 @@
     }
     &-item {
         @extend %shadow;
-        background: rgba(121, 0, 0, 0.815);
+        @include border-style(rgb(255, 253, 235),1px,rgba(121, 0, 0, 0.815));
         margin: 10px;
         color: white;
         width: 20vw;
@@ -74,7 +74,10 @@
         }
         font-weight: bold;
         text-align: center;
-
+        &:hover {
+            box-shadow: 0 6px 20px 0 rgb(0, 250, 62), 0 6px 20px 0 rgb(255, 255, 255);
+            background: rgb(182, 0, 0);
+        }
         &-title {
             @include text-design('Uncial Antiqua',cursive,center,white);
             background-color: black;
