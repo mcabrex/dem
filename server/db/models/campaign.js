@@ -9,7 +9,7 @@ const Campaign = db.define('campaign', {
     validate: {
       notEmpty: {
         args: true,
-        msg: "Campaign title required"
+        msg: "Campaigns needs a title!"
       }
     }
   },

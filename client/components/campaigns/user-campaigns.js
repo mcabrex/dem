@@ -26,7 +26,8 @@ export class UserCampaigns extends React.Component {
   }
 
   render() {
-    const campaigns = this.props.campaigns
+    const {error,campaigns} = this.props
+    console.log('props',this.props)
     const campaignBuilder = () => {
       return campaigns.map(campaign => {
         return (
@@ -63,7 +64,8 @@ export class UserCampaigns extends React.Component {
             <AddCampaign onClick={this.clickAddCampaign} />
           ) : null}
         </div>
-        <div className="campaigns-container">{campaigns.length > 0 ? campaignBuilder() : null}</div>
+        {error && error.response && <div className="form-error"> {error.response.data.slice(17)} </div>}
+        <div className="campaigns-container">{ campaigns && campaigns.length > 0 ? campaignBuilder() : null}</div>
       </div>
     )
   }
@@ -76,7 +78,8 @@ const mapState = state => {
   console.log('state',state)
   return {
     userId: state.user.id,
-    campaigns: state.campaigns
+    campaigns: state.campaigns.campaignList,
+    error: state.campaigns.error
   }
 }
 

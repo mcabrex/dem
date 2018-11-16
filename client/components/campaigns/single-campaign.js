@@ -39,9 +39,6 @@ export class SingleCampaign extends React.Component {
     //update component when redux store gets updated
     return (
       <div>
-        <div className="campaigns-add" id="add">
-          +Add Campaign
-        </div>
         <div onClick={this.clickDeleteCampaign} className="campaigns-add">
           -Delete Campaign
         </div>
@@ -57,7 +54,7 @@ export class SingleCampaign extends React.Component {
         </div>
         <div>{campaigns[0].title}</div>
         <div>{campaigns[0].description}</div>
-        <div>Characters</div>
+        <div>Add Characters</div>
       </div>
     )
   }

@@ -11,7 +11,7 @@ const REMOVE_CAMPAIGN = 'REMOVE_CAMPAIGN'
 /**
  * INITIAL STATE
  */
-const defaultCampaigns = []
+const defaultCampaigns = {}
 
 /**
  * ACTION CREATORS
@@ -61,6 +61,7 @@ export const addCampaign = (username,userId,campaignName,campaignDescription) =>
       dispatch(getCampaigns(campaignInfo.data || defaultCampaigns))
     } catch (err) {
       console.error(err)
+      return dispatch(getCampaigns({error:err}))
     }
 }
 
@@ -70,7 +71,13 @@ export const addCampaign = (username,userId,campaignName,campaignDescription) =>
 export default function(state = defaultCampaigns, action) {
   switch (action.type) {
     case GET_CAMPAIGNS:
-      return action.campaigns
+      return action.campaigns.error ? {
+        ...state,
+        error: action.campaigns.error
+      } : {
+        ...state,
+        campaignList: action.campaigns
+      }
     case GET_CAMPAIGN:
       return action.campaign
     case REMOVE_CAMPAIGN:
