@@ -1,0 +1,99 @@
+@import './mixins';
+.campaigns {
+    &-add {
+        &:hover {
+        @include div-hover($red);
+        }
+        margin: 2.5%;
+        width: fit-content;
+        padding: 1%;
+    }
+    &-form {
+        &-name {
+            width: 100%;
+            display: grid;
+            &-title {
+                width: 100%;
+                margin: 0 auto;
+            }
+            &-input {
+
+            }
+        }
+        &-description {
+            width: 100%;
+            display: grid;
+            &-title {
+
+            }
+            &-input {
+                height: 10vh;
+                padding: 10px;
+                resize: none;
+            }
+        }
+        &-submit {
+
+        }
+        &-clicked {
+            @extend %shadow;
+            @include border-style(black,5px,rgb(150, 6, 6));
+            border-spacing: 15px;
+            padding: 10px;
+            display: block;
+            position:fixed;
+            width: fit-content;
+            height: fit-content;
+            top:50%;
+            left:50%;
+            transform: translate(-35%,-100%);          
+        }
+        &-unclicked {
+            display: none;
+        }
+    }
+    &-container {
+        overflow: auto;
+        list-style: none;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        justify-content: center;
+    }
+    &-item {
+        @extend %shadow;
+        @include border-style(rgb(255, 253, 235),1px,rgba(121, 0, 0, 0.815));
+        margin: 10px;
+        color: white;
+        width: 20vw;
+        @media screen and (max-width: 720px) {
+            width: 40vw;
+        }
+        font-weight: bold;
+        text-align: center;
+        &:hover {
+            box-shadow: 0 6px 20px 0 rgb(0, 250, 62), 0 6px 20px 0 rgb(255, 255, 255);
+            background: rgb(182, 0, 0);
+        }
+        &-title {
+            @include text-design('Uncial Antiqua',cursive,center,white);
+            background-color: black;
+            width: 100%;
+            overflow: auto;
+        }
+        &-description {
+            font-size: 1.5vh;
+            padding: 1vh 1vw;
+            width: 18vw;
+            @media screen and (max-width: 720px) {
+                width: 38vw;
+            }
+            height: 20.5vh;
+            overflow: auto;
+            word-wrap: break-word;
+        }
+    }
+}

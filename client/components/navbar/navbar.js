@@ -6,7 +6,6 @@ import NavbarLoggedIn from './navbar-logged-in'
 import NavbarLoggedOut from './navbar-logged-out'
 
 const Navbar = ({handleClick,username,dice,isLoggedIn}) => {
-  console.log('dice',dice)
   return (
   <div className="navbar">
     <div className="navbar-top">
@@ -25,7 +24,6 @@ const Navbar = ({handleClick,username,dice,isLoggedIn}) => {
  * CONTAINER
  */
 const mapState = state => {
-  console.log('state',state.dice)
   return {
     dice: state.dice.dice,
     username: state.user.username,

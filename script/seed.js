@@ -13,7 +13,42 @@ async function seed() {
     User.create({username: 'Otagwenko', email: 'mrcabardo@gmail.com', password: 'league'})
   ])
 
+  const campaigns = await Promise.all([
+    Campaign.create({
+      title: 'Codys Fun-house',
+      description: 'ooga booga wooga',
+      userId: 1
+    }),
+    Campaign.create({
+      title: 'The path less Codyd',
+      description: 'ooga booga wooga',
+      userId: 1
+    }),
+    Campaign.create({
+      title: 'Murph Nation Yall',
+      description: 'ooga booga wooga',
+      userId: 2
+    }),
+    Campaign.create({
+      title: 'Murphys spooky kingdom',
+      description: 'ooga booga wooga',
+      userId: 2
+    }),
+    Campaign.create({
+      title: 'Otag Bopag Lowtag',
+      description: 'ooga booga wooga',
+      userId: 3
+    }),
+    Campaign.create({
+      title: 'The House of Cheese',
+      description: 'ooga booga wooga',
+      userId: 3
+    }),
+  ])
+
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${campaigns.length} campaigns`)
+
   console.log(`seeded successfully`)
 }
 

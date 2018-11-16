@@ -6,10 +6,10 @@ import {
   Login, 
   Signup, 
   UserHome, 
-  UserCampaigns, 
+  UserCampaigns, SingleCampaign,
   Classes, dndClass, 
-  AbilityScores, 
-  Skills
+  Spells, dndSpell,
+  Races, dndRace,
 } from './components'
 import {me} from './store'
 
@@ -34,12 +34,14 @@ class Routes extends Component {
             <Switch>
               {/* Routes placed here are only available after logging in */}
               <Route path="/home" component={UserHome} />
-              <Route path="/campaigns" component={UserCampaigns} />
-              <Route path="/ability-score" component={AbilityScores} />
-              <Route exact path="/skills" component={Skills} />
+              <Route exact path="/campaigns" component={UserCampaigns} />
+              <Route path="/campaigns/:campaignId" component={SingleCampaign} />
               <Route exact path="/classes" component={Classes} />
               <Route path="/classes/:className" component={dndClass} />
-              
+              <Route exact path="/races" component={Races} />
+              <Route path="/races/:raceName" component={dndRace} />
+              <Route exact path="/spells" component={Spells} />
+              <Route path="/spells/:spellName" component={dndSpell} />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

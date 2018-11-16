@@ -15,13 +15,13 @@ const NavbarLoggedIn = ({handleClick}) => {
         <Link to="/campaigns" className="navbar-items-link">Campaigns</Link>
       </div>
       <div className="navbar-items-div">
-        <Link to="/ability-score" className="navbar-items-link">Ability Score</Link>
-      </div>
-      <div className="navbar-items-div">
-        <Link to="/skills" className="navbar-items-link">Skills</Link>
+        <Link to="/races" className="navbar-items-link">Races</Link>
       </div>
       <div className="navbar-items-div">
         <Link to="/classes" className="navbar-items-link">Classes</Link>
+      </div>
+      <div className="navbar-items-div">
+        <Link to="/spells" className="navbar-items-link">Spells</Link>
       </div>
       <div className="navbar-items-div">
         <a href="#" onClick={handleClick} className="navbar-items-link">Logout</a>

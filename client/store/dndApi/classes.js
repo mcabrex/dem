@@ -29,7 +29,7 @@ const getClassesFailure = error => ({type: GET_CLASSES_FAILURE, error})
 export const getClasses = () => async dispatch => {
   try {
     dispatch(getClassesBegin())
-    const res = await axios.get('http://www.dnd5eapi.co/api/classes')
+    const res = await axios.get('https://api-beta.open5e.com/classes/')
     dispatch(getClassesSuccess(res.data.results))
     return res.data.results;
   } catch (err) {

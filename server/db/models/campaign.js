@@ -5,7 +5,13 @@ const Campaign = db.define('campaign', {
   title: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        args: true,
+        msg: "Campaigns needs a title!"
+      }
+    }
   },
   description: Sequelize.TEXT
 })
