@@ -10,14 +10,25 @@ const User = db.define('user', {
   },
   email: {
     type: Sequelize.STRING,
+    allowNull: false,
     unique: true,
-    allowNull: false
+    validate: {
+      isEmail: {
+        args: true,
+        msg: "Email address is not valid"
+      }
+    }
   },
   password: {
     type: Sequelize.STRING,
     allowNull: false,
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
+    validate:  {
+      passwordLength(value){
+        if(value.length < 4) throw new Error("Password must be at least 4 characters long")
+      }
+    },
     get() {
       return () => this.getDataValue('password')
     }
