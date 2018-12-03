@@ -37,10 +37,12 @@ export class UserCampaigns extends React.Component {
             id={campaign.id}
             key={campaign.id}
           >
+          <div className="campaigns-item-border">
             <div className="campaigns-item-title">{campaign.title}</div>
             <div className="campaigns-item-description">
               {campaign.description}
             </div>
+          </div>
           </Link>
         )
       })

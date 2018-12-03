@@ -64,8 +64,8 @@
         justify-content: center;
     }
     &-item {
+        text-decoration: none;
         @extend %shadow;
-        @include border-style(rgb(255, 253, 235),1px,rgba(121, 0, 0, 0.815));
         margin: 10px;
         color: white;
         width: 20vw;
@@ -74,24 +74,25 @@
         }
         font-weight: bold;
         text-align: center;
+        background-color: $red;
         &:hover {
-            box-shadow: 0 6px 20px 0 rgb(0, 250, 62), 0 6px 20px 0 rgb(255, 255, 255);
-            background: rgb(182, 0, 0);
+            box-shadow: 0 6px 20px 0 rgb(248, 105, 100), 0 6px 20px 0 rgb(255, 255, 255);
+            background: rgb(255, 74, 74);
         }
         &-title {
             @include text-design('Uncial Antiqua',cursive,center,white);
-            background-color: black;
-            width: 100%;
+            width: 75%;
             overflow: auto;
+            padding-bottom: 3px;
+            margin: 0 auto;
+            border-bottom: 2px solid #000;
         }
         &-description {
             font-size: 1.5vh;
-            padding: 1vh 1vw;
-            width: 18vw;
-            @media screen and (max-width: 720px) {
-                width: 38vw;
-            }
+            width: 100%;
+            text-align: center;
             height: 20.5vh;
+            padding-top: 5px;
             overflow: auto;
             word-wrap: break-word;
         }
